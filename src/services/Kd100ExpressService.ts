@@ -34,4 +34,8 @@ export class Kd100ExpressService {
     async PollQuery(params: Kd100Express.PollQueryReq): Promise<Kd100Express.PollQueryRes> {
         return await this.bin.request('https://poll.kuaidi100.com/poll/query.do', params)
     }
+
+    async test(param: any) {
+        return param
+    }
 }
