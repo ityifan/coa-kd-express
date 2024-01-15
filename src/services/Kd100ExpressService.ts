@@ -11,10 +11,10 @@ export class Kd100ExpressService {
     }
 
     /**
-     * 电子面单下单接口
-     * @param params
-     */
-    async LabelOrder(params: any) {
+  * 电子面单下单接口
+  * @param params
+  */
+    async LabelOrder(params: Kd100Express.LabelOrderReq): Promise<Kd100Express.LabelOrderRes> {
         return await this.bin.request('https://api.kuaidi100.com/label/order', params)
     }
     /**
@@ -22,7 +22,7 @@ export class Kd100ExpressService {
      * @param params
      */
 
-    async Eorderapi(params: any) {
+    async Eorderapi(params: Kd100Express.EorderapiReq): Promise<Kd100Express.EorderapiRes> {
         return await this.bin.request('https://poll.kuaidi100.com/eorderapi.do', params)
     }
 
