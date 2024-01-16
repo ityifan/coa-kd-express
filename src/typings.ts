@@ -9,7 +9,7 @@ export declare namespace Kd100Express {
         from?: string;
         to?: string;
         show?: string;
-        order: string;
+        order?: string;
     }
 
     interface PollQueryRes {
@@ -28,7 +28,7 @@ export declare namespace Kd100Express {
         signType: number
         payTpe: string
         expType: string
-        needSubscribe: string
+        needSubscribe: boolean
         pollCallBackUrl: string
         printType: string
         customParam: any
@@ -38,7 +38,7 @@ export declare namespace Kd100Express {
         recMan: any
         sendMan: any
         cargo: string
-        count: string
+        count: number
         tempId: string
         partnerSecret?: string
         code?: string
@@ -76,29 +76,31 @@ export declare namespace Kd100Express {
     }
 
     interface LabelOrderRes {
-        taskId: string
-        kuaidinum: string
-        childNum: string
-        returnNum: string
-        label: string
-        bulkpen: string
-        orgCode: string
-        orgName: string
-        destCode: string
-        destName: string
-        orgSortingCode: string
-        orgSortingName: string
-        destSortingCode: string
-        destSortingName: string
-        orgExtra: string
-        destExtra: string
-        pkgCode: string
-        pkgName: string
-        road: string
-        qrCode: string
-        kdComOrderNum: string
-        expressCode: string
-        expressName: string
+        data: {
+            taskId: string
+            kuaidinum: string
+            childNum: string
+            returnNum: string
+            label: string
+            bulkpen: string
+            orgCode: string
+            orgName: string
+            destCode: string
+            destName: string
+            orgSortingCode: string
+            orgSortingName: string
+            destSortingCode: string
+            destSortingName: string
+            orgExtra: string
+            destExtra: string
+            pkgCode: string
+            pkgName: string
+            road: string
+            qrCode: string
+            kdComOrderNum: string
+            expressCode: string
+            expressName: string
+        }
     }
 
     interface EorderapiReq {

@@ -93,12 +93,15 @@ export class Kd100ExpressBin {
 
         // 判断是否正确
         if (data.returnCode && signType === 2) {
-
             die.hint(`快递100系统提示:[${data.returnCode}] ${data.message}`, 400, data.returnCode)
         }
 
         if (data.status !== '200' && signType === 1) {
             die.hint(`快递100系统提示:[${data.status}] ${data.message}`, 400, data.status)
+        }
+
+        if (data.code !== 200 && signType === 2) {
+            die.hint(`快递100系统提示:[${data.code}] ${data.message}`, 400, data.code)
         }
         return data
     }
