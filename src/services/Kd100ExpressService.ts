@@ -1,6 +1,5 @@
 import { Kd100ExpressBin, Kd100ExpressConfig } from '../libs/Kd100ExpressBin'
 import { Kd100Express } from '../typings'
-import querystring from 'querystring'
 
 export class Kd100ExpressService {
     protected bin: Kd100ExpressBin
