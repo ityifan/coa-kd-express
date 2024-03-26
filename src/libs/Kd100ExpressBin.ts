@@ -1,5 +1,5 @@
 import { die } from 'coa-error'
-import { _, axios } from 'coa-helper'
+import { _, axios, Axios } from 'coa-helper'
 import { createHash } from 'crypto'
 import * as qs from 'querystring'
 
@@ -22,6 +22,27 @@ export class Kd100ExpressBin {
 
     constructor(config: Kd100ExpressConfig) {
         this.config = config
+    }
+
+    async simpleRequest(method: Axios.Method, url: string, bizParams: Record<string, any>) {
+        //  请求并且记录开始、结束时间
+        const startAt = Date.now()
+        const res = await axios.request({
+            method,
+            url,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            data: qs.stringify(bizParams),
+        })
+
+        const endAt = Date.now()
+        // 触发请求事件
+        this.onRequest({}, bizParams, res.data)
+        // 触发请求时间过长事件
+        if (endAt - startAt > this.thresholdTooLong) {
+            this.onRequestTooLong(url, {}, res.data, { startAt, endAt })
+        }
+
+        return res.data
     }
 
     // 请求
