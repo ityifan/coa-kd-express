@@ -42,7 +42,15 @@ export class Kd100ExpressBin {
             this.onRequestTooLong(url, {}, res.data, { startAt, endAt })
         }
 
-        return res.data
+        const data = res.data || {}
+        try {
+            data.returnCode !== '200' && die.hint(`快递100系统提示:[${data.returnCode}] ${data.message}`, 400, data.returnCode)
+            return data
+        } catch (e) {
+            // 触发请求错误事件
+            this.onRequestError(bizParams, data, e)
+            throw e
+        }
     }
 
     // 请求
