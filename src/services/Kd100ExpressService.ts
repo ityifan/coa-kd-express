@@ -48,6 +48,7 @@ export class Kd100ExpressService {
                 key: this.config.key,
                 parameters: {
                     callbackurl: this.config.callBackUrl,
+                    resultv2: '4',
                 }
             }),
         })
