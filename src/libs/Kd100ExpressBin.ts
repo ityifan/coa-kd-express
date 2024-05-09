@@ -44,7 +44,7 @@ export class Kd100ExpressBin {
 
         const data = res.data || {}
         try {
-            data.returnCode !== '200' && die.hint(`快递100系统提示:[${data.returnCode}] ${data.message}`, 400, data.returnCode)
+            data.returnCode !== '200' && data.returnCode !== '501' && die.hint(`快递100系统提示:[${data.returnCode}] ${data.message}`, 400, data.returnCode)
             return data
         } catch (e) {
             // 触发请求错误事件
