@@ -48,12 +48,10 @@ export class Kd100ExpressService {
                 key: this.config.key,
                 parameters: {
                     callbackurl: this.config.callBackUrl,
+                    phone,
                     resultv2: '4',
                 }
             }),
-            parameters: {
-                phone,
-            },
         })
     }
 
