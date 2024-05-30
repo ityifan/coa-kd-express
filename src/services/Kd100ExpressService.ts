@@ -39,7 +39,7 @@ export class Kd100ExpressService {
      * @company 订阅的快递公司的编码，一律用小写字母
      * @number 订阅的快递单号， 单号的最小长度6个字符，最大长度32个字符
      */
-    async Subscribe(company: string, number: string): Promise<{ result: boolean, returnCode: string, message: string }> {
+    async Subscribe(company: string, number: string, phone: string): Promise<{ result: boolean, returnCode: string, message: string }> {
         return await this.bin.simpleRequest('POST', 'https://poll.kuaidi100.com/poll', {
             schema: 'json',
             param: JSON.stringify({
@@ -48,6 +48,7 @@ export class Kd100ExpressService {
                 key: this.config.key,
                 parameters: {
                     callbackurl: this.config.callBackUrl,
+                    phone,
                     resultv2: '4',
                 }
             }),
